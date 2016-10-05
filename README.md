@@ -11,12 +11,12 @@ Below are the roles variables with the respective default values. Usually you'd 
 
 blackbox_version: 0.2.0
 blackbox_url: https://github.com/prometheus/blackbox_exporter/releases/download/v{{ blackbox_version }}/blackbox_exporter-{{ blackbox_version }}.linux-amd64.tar.gz
-blackbox_install_dir: /usr/bin
+blackbox_install_dir: /opt/blackbox_exporter
 blackbox_config_file: /etc/blackbox.yml
 blackbox_pid_file: /var/run/blackbox.pid
 blackbox_log_file: /var/log/blackbox.log
 blackbox_log_level: info
-blackbox_log_format: stderr
+blackbox_log_format: ''
 blackbox_user: root
 blackbox_group: root
 blackbox_service_name: blackbox
@@ -28,6 +28,11 @@ Example Playbook
     - hosts: servers
       roles:
          - { role: ansible-blackbox-exporter, blackbox_version: 0.2.0 }
+
+Test
+----
+
+$ molecule test
 
 License
 -------

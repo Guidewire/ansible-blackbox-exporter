@@ -9,7 +9,7 @@ def test_configuration(File):
     assert blackbox_config.contains("modules")
     assert blackbox_config.user == "root"
     assert blackbox_config.group == "root"
-    assert blackbox_config.mode == 0o655
+    assert blackbox_config.mode == 0o644
 
 
 def test_service_running_and_enabled(File, Command):
@@ -17,7 +17,7 @@ def test_service_running_and_enabled(File, Command):
     assert blackbox_config.contains("START=yes")
     assert blackbox_config.user == "root"
     assert blackbox_config.group == "root"
-    assert blackbox_config.mode == 0o655
+    assert blackbox_config.mode == 0o644
 
     blackbox_service = Command("/sbin/service blackbox-exporter status")
     assert blackbox_service.rc == 0
